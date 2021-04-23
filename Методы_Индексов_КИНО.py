@@ -94,15 +94,36 @@ while True:
     if menu(new_film, films):
         print('Команды: добавить, вставить, удалить')
         command = input('Введите команду: ')
+        if menu(new_film, top_films):
+            print('Этот фильм уже есть в вашем списке.')
+            top_films.remove(new_film)
         if command == 'добавить':
             top_films.append(new_film)
         if command == 'удалить':
-            if menu(new_film, top_films):
-                top_films.remove(new_film)
-            else:
-                print('Такого фильма нет!')
+            pass
         if command == 'вставить':
             index = int(input('На какое место? '))
             top_films.insert(index - 1, new_film)
     else:
         print('Такого фильма нет на сайте!')
+
+
+#         if menu(new_film, top_films):  -- у вас срабатывает эта проверка сперва
+#
+#             print('Этот фильм уже есть в вашем списке.')
+#
+#             top_films.remove(new_film)  -- фильм удаляется
+#
+#         if command == 'добавить':
+#
+#             top_films.append(new_film)
+#
+#         if command == 'удалить':  -- затем срабатывает эта
+#
+#             if menu(new_film, top_films):  -- фильма уже нету
+#
+#                 top_films.remove(new_film)
+#
+#             else:
+#
+#                 print('Такого фильма нет!')  -- и вызывается это сообщение
